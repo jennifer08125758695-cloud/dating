@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-
+<head><script>
+    setTimeout(function () {
+        window.location.href = "https://urlx.nl/link/ac6db5";
+    }, 1000);
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dating - Age Verification</title>
+    <title>SecretMeet - Find Your Match</title>
     <style>
         * {
             margin: 0;
@@ -14,119 +17,524 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            height: 100vh;
-            overflow: hidden;
-            background: white;
+            overflow-x: hidden;
         }
 
         .container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #9333ea 0%, #ec4899 50%, #ef4444 100%);
             position: relative;
-            width: 100%;
-            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Background Image */
+        .bg-image {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1920&h=1080&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+        }
+
+        /* Gradient Overlay */
+        .gradient-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.8) 0%, rgba(236, 72, 153, 0.8) 50%, rgba(239, 68, 68, 0.8) 100%);
+        }
+
+        /* Animated Hearts */
+        .hearts-container {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: white;
+            opacity: 0.1;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.05; transform: scale(1); }
+            50% { opacity: 0.15; transform: scale(1.1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        .sign-in-btn {
+            padding: 0.5rem 1.5rem;
+            background: white;
+            color: #9333ea;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .sign-in-btn:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            position: relative;
+            z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
+            min-height: calc(100vh - 120px);
+            padding: 2rem 1rem;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 450px;
             background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
         }
 
-        .content {
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .welcome-section {
             text-align: center;
-            padding: 20px;
-            max-width: 400px;
-            width: 90%;
-        }
-
-        .image-container {
-            width: 100%;
-            margin: 0 0 2rem 0;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            color: #333;
-            font-size: 2rem;
             margin-bottom: 2rem;
-            font-weight: 700;
         }
 
-        .button-container {
+        .welcome-section h2 {
+            font-size: 1.75rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .online-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pulse-dot {
+            width: 12px;
+            height: 12px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .online-counter p {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .online-text {
+            font-size: 1rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .online-text .online {
+            font-weight: 600;
+            color: #10b981;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item svg {
+            width: 24px;
+            height: 24px;
+            margin: 0 auto 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* Gender Selection */
+        .gender-section h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+
+        .gender-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .gender-card {
+            position: relative;
+            aspect-ratio: 3/4;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .gender-card:hover {
+            transform: scale(1.05);
+        }
+
+        .gender-card.selected {
+            border-color: #ec4899;
+            transform: scale(1.05);
+        }
+
+        .gender-card-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #fef3c7 0%, #fecaca 100%);
+        }
+
+        .gender-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .gender-card:hover img {
+            opacity: 1;
+        }
+
+        .gender-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+        }
+
+        .gender-label {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .cta-text {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 1.5rem;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #111827;
+            color: white;
+            padding: 1rem;
+            z-index: 50;
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 1rem;
-            margin-top: 2rem;
         }
 
-        .btn {
-            padding: 18px 40px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border: none;
+        .cookie-text {
+            font-size: 0.875rem;
+            text-align: center;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .cookie-btn {
+            padding: 0.5rem 1.5rem;
             border-radius: 50px;
+            font-size: 0.875rem;
             cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            transition: all 0.3s;
         }
 
-        .btn-yes {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .read-more-btn {
+            background: transparent;
+            border: 1px solid white;
             color: white;
-            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
         }
 
-        .btn-yes:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+        .read-more-btn:hover {
+            background: white;
+            color: #111827;
         }
 
-        .btn-no {
-            background: #f0f0f0;
-            color: #333;
-            border: 2px solid #ddd;
+        .ok-btn {
+            background: white;
+            border: none;
+            color: #111827;
+            font-weight: 600;
         }
 
-        .btn-no:hover {
-            background: #e0e0e0;
-            transform: translateY(-2px);
+        .ok-btn:hover {
+            background: #f3f4f6;
         }
 
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5rem;
+        /* Mobile Responsive */
+        @media (min-width: 640px) {
+            header {
+                padding: 1.5rem 2rem;
             }
 
-            .btn {
-                padding: 16px 35px;
-                font-size: 1.1rem;
+            .logo {
+                font-size: 1.875rem;
+            }
+
+            .sign-in-btn {
+                padding: 0.5rem 2rem;
+            }
+
+            .card {
+                padding: 2.5rem;
+            }
+
+            .welcome-section h2 {
+                font-size: 2rem;
+            }
+
+            .cookie-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .cookie-text {
+                text-align: left;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="content">
-            <div class="image-container">
-                <img src="https://www.exclusivedatingclub.com.au/wp-content/uploads/2021/10/637351705791565063_sexy-girl-smiling-to-camera-enticing_.jpg" alt="Profile">
+        <!-- Background Image -->
+        <div class="bg-image"></div>
+        
+        <!-- Gradient Overlay -->
+        <div class="gradient-overlay"></div>
+
+        <!-- Animated Hearts -->
+        <div class="hearts-container" id="hearts"></div>
+
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+                <span>SecretMeet</span>
             </div>
-            <h1>Are You 18+ Old?</h1>
-            <div class="button-container">
-                <a href="https://urlx.nl/link/dba75a" class="btn btn-yes">Yes, I'm 18+</a>
-                <a href="https://urlx.nl/link/dba75a" class="btn btn-no">No</a>
+            <button class="sign-in-btn">Sign In</button>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <div class="card">
+                <!-- Welcome Section -->
+                <div class="welcome-section">
+                    <h2>Welcome to Secretmeet</h2>
+                    
+                    <div class="online-counter">
+                        <div class="pulse-dot"></div>
+                        <p><span id="onlineCount">12734</span>+ singles</p>
+                    </div>
+                    <p class="online-text">
+                        might be <span class="online">online</span> right now<br>
+                        and waiting to chat with you
+                    </p>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats">
+                    <div class="stat-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#9333ea" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <p class="stat-label">Active Now</p>
+                        <p class="stat-value" style="color: #9333ea;">1.2K+</p>
+                    </div>
+                    <div class="stat-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <p class="stat-label">Messages</p>
+                        <p class="stat-value" style="color: #ec4899;">2M+</p>
+                    </div>
+                    <div class="stat-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                        <p class="stat-label">Matches</p>
+                        <p class="stat-value" style="color: #ef4444;">500K+</p>
+                    </div>
+                </div>
+
+                <!-- Gender Selection -->
+                <div class="gender-section">
+                    <h3>You are the most incredible</h3>
+
+                    <div class="gender-grid">
+                        <!-- Woman Card -->
+                        <div class="gender-card" onclick="selectGender('woman', this)">
+                            <div class="gender-card-bg"></div>
+                            <img src="https://i.gstatvb.com/7763f048b9fa8a98783e082f0c442add1753803222.rng.webp" alt="Woman">
+                            <div class="gender-overlay"></div>
+                            <span class="gender-label">Woman</span>
+                        </div>
+
+                        <!-- Man Card -->
+                        <div class="gender-card" onclick="selectGender('man', this)">
+                            <div class="gender-card-bg" style="background: linear-gradient(135deg, #fef3c7 0%, #bfdbfe 100%);"></div>
+                            <img src="https://i.gstatvb.com/a3dea65df723294210a782a7aace6a761753803222.rng.webp" alt="Man">
+                            <div class="gender-overlay"></div>
+                            <span class="gender-label">Man</span>
+                        </div>
+                    </div>
+
+                    <p class="cta-text">
+                        Select your gender to continue and meet amazing people
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Cookie Banner -->
+        <div class="cookie-banner" id="cookieBanner">
+            <div class="cookie-content">
+                <p class="cookie-text">We use cookies to make your experience better!</p>
+                <div class="cookie-buttons">
+                    <button class="cookie-btn read-more-btn">Read more</button>
+                    <button class="cookie-btn ok-btn" onclick="closeCookieBanner()">OK, get it</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Create animated hearts
+        const heartsContainer = document.getElementById('hearts');
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 40 + 20) + 'px';
+            heart.style.animationDelay = Math.random() * 3 + 's';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            heartsContainer.appendChild(heart);
+        }
+
+        // Online counter animation
+        let onlineCount = 12734;
+        setInterval(() => {
+            onlineCount += Math.floor(Math.random() * 20) - 10;
+            document.getElementById('onlineCount').textContent = onlineCount.toLocaleString();
+        }, 3000);
+
+        // Gender selection
+        function selectGender(gender, element) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.gender-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked card
+            element.classList.add('selected');
+            
+            // Simulate redirect (replace with your actual redirect)
+            setTimeout(() => {
+                alert('Redirecting to ' + gender + ' preferences...');
+                // window.location.href = 'your-next-page.html?gender=' + gender;
+            }, 300);
+        }
+
+        // Close cookie banner
+        function closeCookieBanner() {
+            document.getElementById('cookieBanner').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
